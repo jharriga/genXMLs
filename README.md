@@ -5,8 +5,8 @@ Creates these XML files
 
 FILENAME | Description
 -------- | -----------
-fill.xml | cluster fill workload (creates buckets and objects)
-empty.xml | cluster empty (removes objects and buckets)
+fill.xml | cluster fill workload (creates buckets and objects) **must be run as first workload**
+empty.xml | cluster empty (removes objects and buckets) **must be run as last workload**
 seqops.xml | performs sequential reads then writes
 randomops.xml | performs random reads then writes
 mixedops.xml | performs mixture of read, list, write, deletes
@@ -24,7 +24,7 @@ Further define workload conditions by defining these
 VARIABLE | Description
 -------- | -----------
 testname | name prepended to all XML files
-runtime | workstage duration in seconds
+runtime | workstage duration in seconds **- not used in fill or empty workloads**
 objSIZES | object sizes
 numCONT | number of containers/buckets     
 numOBJ  | number of objects (per bucket)
