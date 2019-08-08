@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workload name="empty-s3" description="cleanup s3 benchmark">
+
+  <storage type="s3" config="THEauth" />
+
+  <workflow>
+
+    <workstage name="cleanup">
+      <work type="cleanup" workers="FILLworkers" config="cprefix=THEcprefix;containers=r(1,THEnumCont);objects=r(1,THEnumObjMax)" />
+    </workstage>
+
+    <workstage name="dispose">
+      <work type="dispose" workers="1" config="cprefix=THEcprefix;containers=r(1,THEnumCont)" />
+    </workstage>
+
+  </workflow>
+
+</workload>
