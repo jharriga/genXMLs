@@ -1,6 +1,8 @@
 # genXMLs
 script to generate COSbench XML files for s3 benchmarking
 
+**NOTE: it generates a random string as container prefix name to avoid AWS S3 name collisions**
+
 Creates these XML files
 
 FILENAME | Description
