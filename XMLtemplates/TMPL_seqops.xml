@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workload name="seqOps" description="sequential write then read">
+
+  <storage type="s3" config="THEauth" />
+
+  <workflow>
+
+    <workstage name="seqwrite">
+      <work name="seqwrite" workers="SEQworkers" division="object" runtime="THEruntime">
+        <operation type="write" ratio="100" config="cprefix=THEcprefix;containers=s(1,THEnumCont);objects=s(1,THEnumObj);sizes=THEsizes" />
+      </work>
+    </workstage>
+
+    <workstage name="seqread">
+      <work name="seqread" workers="SEQworkers" division="object" runtime="THEruntime">
+        <operation type="read" ratio="100" config="cprefix=THEcprefix;containers=s(1,THEnumCont);objects=s(1,THEnumObj)" />
+      </work>
+    </workstage>
+
+  </workflow>
+
+</workload>
