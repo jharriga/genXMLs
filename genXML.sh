@@ -102,7 +102,7 @@ declare -a THEkeys_arr=(
            "THEsizes"
            "THEnumCont"
            "THEnumObj"
-           "THEnumObjMax"
+           "THEmaxNumObj"
            "THEcprefix"
            "THEruntime"
            "MIXEDrdRatio"
