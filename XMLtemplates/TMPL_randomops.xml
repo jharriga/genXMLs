@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workload name="randomops" description=" random read and write workload">
+
+  <storage type="s3" config="THEauth" />
+
+  <workflow>
+
+    <workstage name="randread">
+      <work name="randread" workers="RANDOMworkers" division="object" runtime="THEruntime">
+        <operation type="read" ratio="100" config="cprefix=THEcprefix;containers=u(1,THEnumCont);objects=u(1,THEnumObj)" />
+      </work>
+    </workstage>
+
+    <workstage name="randwr">
+      <work name="randwr" workers="RANDOMworkers" division="object" runtime="THEruntime">
+        <operation type="write" ratio="100" config="cprefix=THEcprefix;containers=u(1,THEnumCont);objects=u(1,THEnumObj);sizes=THEsizes" />
+      </work>
+    </workstage>
+
+  </workflow>
+
+</workload>
