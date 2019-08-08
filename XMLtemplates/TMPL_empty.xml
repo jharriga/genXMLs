@@ -6,7 +6,7 @@
   <workflow>
 
     <workstage name="cleanup">
-      <work type="cleanup" workers="FILLworkers" config="cprefix=THEcprefix;containers=r(1,THEnumCont);objects=r(1,THEnumObjMax)" />
+      <work type="cleanup" workers="FILLworkers" config="cprefix=THEcprefix;containers=r(1,THEnumCont);objects=r(1,THEmaxNumObj)" />
     </workstage>
 
     <workstage name="dispose">
