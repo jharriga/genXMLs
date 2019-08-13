@@ -1,7 +1,7 @@
 # genXMLs
-script to generate COSbench XML files for s3 benchmarking
+genXML.sh script to generate COSbench XML files for s3 benchmarking. Also includes 'cbparser.py', a script which parses COSbench workload results archive directory and produces text results file. USAGE: ./cbparser.py -d archive/w25-empty-s3/
 
-**NOTE: it generates a random string as container prefix name to avoid AWS S3 name collisions**
+**NOTE: genXML.sh generates a random string as container prefix name to avoid AWS S3 name collisions**
 
 Creates these XML files
 
