@@ -13,7 +13,7 @@
 
     <workstage name="seqread">
       <work name="seqread" workers="SEQworkers" division="object" runtime="THEruntime">
-        <operation type="read" ratio="100" config="cprefix=THEcprefix;containers=s(1,THEnumCont);objects=s(1,THEnumObj)" />
+        <operation type="read" ratio="100" config="cprefix=THEcprefix;containers=s(1,THEnumCont);objects=s(1,THEnumObj);hashCheck=true" />
       </work>
     </workstage>
 

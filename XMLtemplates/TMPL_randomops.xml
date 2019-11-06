@@ -7,7 +7,7 @@
 
     <workstage name="randread">
       <work name="randread" workers="RANDOMworkers" division="object" runtime="THEruntime">
-        <operation type="read" ratio="100" config="cprefix=THEcprefix;containers=u(1,THEnumCont);objects=u(1,THEnumObj)" />
+        <operation type="read" ratio="100" config="cprefix=THEcprefix;containers=u(1,THEnumCont);objects=u(1,THEnumObj);hashCheck=true" />
       </work>
     </workstage>
 
