@@ -7,8 +7,8 @@
 
     <workstage name="mainmixed">
       <work name="main" workers="MIXEDworkers" division="object" runtime="THEruntime">
-        <operation type="read" ratio="MIXEDrdRatio" config="cprefix=THEcprefix;MIXEDrdConf" />
-        <operation type="list" ratio="MIXEDlistRatio" config="cprefix=THEcprefix;MIXEDlistConf" />
+        <operation type="read" ratio="MIXEDrdRatio" config="cprefix=THEcprefix;MIXEDrdConf;hashCheck=true" />
+        <operation type="list" ratio="MIXEDlistRatio" config="cprefix=THEcprefix;MIXEDlistConf;hashCheck=true" />
         <operation type="write" ratio="MIXEDwrRatio" config="cprefix=THEcprefix;MIXEDwrConf;sizes=THEsizes" />
         <operation type="delete" ratio="14" config="cprefix=THEcprefix;MIXEDdelConf" />
       </work>
