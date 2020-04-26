@@ -11,10 +11,22 @@
       </work>
     </workstage>
 
+    <workstage name="init-containers">
+      <work type="init" workers="1" config="cprefix=THEcprefix;containers=r(NUMwrcontstart,NUMwrcontend)" />
+    </workstage> 
+
     <workstage name="randwr">
       <work name="randwr" workers="RANDOMworkers" division="object" runtime="THEruntime">
-        <operation type="write" ratio="100" config="cprefix=THEcprefix;containers=u(1,THEnumCont);objects=u(1,THEnumObj);sizes=THEsizes" />
+        <operation type="write" ratio="100" config="cprefix=THEcprefix;containers=u(NUMwrcontstart,NUMwrcontend);objects=u(1,THEnumObj);sizes=THEsizes" />
       </work>
+    </workstage>
+
+    <workstage name="cleanup">
+      <work type="cleanup" workers="FILLworkers" config="cprefix=THEcprefix;containers=r(NUMwrcontstart,NUMwrcontend);objects=r(1,THEmaxNumObj)" />
+    </workstage>
+
+    <workstage name="dispose">
+      <work type="dispose" workers="1" config="cprefix=THEcprefix;containers=r(NUMwrcontstart,NUMwrcontend)" />
     </workstage>
 
   </workflow>

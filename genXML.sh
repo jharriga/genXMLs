@@ -5,7 +5,7 @@
 
 # START YOUR EDITS HERE---------------------------------------
 # Use this to label your workload files
-testname="test1_"        # prepended to each XML workload name
+testname="test2_"        # prepended to each XML workload name
 #+++++++++++++
 # VARIABLES to configure workload file generation
 # Used in ALL workloads
@@ -30,6 +30,10 @@ randomWORKERS=4
 mixedWORKERS=4
 
 # TYPICALLY you will not need to edit below HERE-------------------
+
+# Calculating Container Start and End for Random/Sequential Write Workload
+numWRCONTSTART=$(( (numCONT+1) ))
+numWRCONTEND=$(( (numCONT+10) ))
 
 # We need a unique bucket name on AWS
 # generate random 20 char string (lowercase only)
@@ -113,6 +117,8 @@ declare -a THEkeys_arr=(
            "MIXEDlistConf"
            "MIXEDwrConf"
            "MIXEDdelConf"
+	   "NUMwrcontstart"
+	   "NUMwrcontend"
            )
 declare -a THEvalues_arr=(
            "${theAUTH}"          # auth credential
@@ -134,6 +140,8 @@ declare -a THEvalues_arr=(
            "${listCONF}"         # config for List operations
            "${wrCONF}"           # config for Write ops
            "${delCONF}"          # config for Delete ops
+	   "${numWRCONTSTART}"   # Start Value of Write Container
+	   "${numWRCONTEND}"     # End Value of Write Container
            )
 #
 # END VARIABLES

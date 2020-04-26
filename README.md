@@ -13,8 +13,8 @@ FILENAME | Description
 -------- | -----------
 fill.xml | cluster fill workload (creates buckets and objects) **must be run as first workload**
 empty.xml | cluster empty (removes objects and buckets) **must be run as last workload**
-seqops.xml | performs sequential reads then writes
-randomops.xml | performs random reads then writes
+seqops.xml | performs sequential reads then writes. For writes it initializes new containers and perfoms write on them. Eventually it deletes and disposes these new containers and objects within it.
+randomops.xml | performs random reads then writes. For writes it initializes new containers and perfoms write on them. Eventually it deletes and disposes these new containers and objects within it.
 mixedops.xml | performs mixture of read, list, write, deletes
 
 Edit genXMLs.sh and set access key, secret key and endpoint
