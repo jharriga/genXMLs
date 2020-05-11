@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<workload name="seqOps" description="sequential write then read">
+<workload name="seqOps" description="sequential read then write">
 
   <storage type="s3" config="THEauth" />
 
   <workflow>
 
-    <workstage name="seqwrite">
-      <work name="seqwrite" workers="SEQworkers" division="object" runtime="THEruntime">
-        <operation type="write" ratio="100" config="cprefix=THEcprefix;containers=s(1,THEnumCont);objects=s(1,THEnumObj);sizes=THEsizes" />
-      </work>
-    </workstage>
-
     <workstage name="seqread">
       <work name="seqread" workers="SEQworkers" division="object" runtime="THEruntime">
         <operation type="read" ratio="100" config="cprefix=THEcprefix;containers=s(1,THEnumCont);objects=s(1,THEnumObj);hashCheck=true" />
       </work>
+    </workstage>
+
+     <workstage name="init-containers">
+      <work type="init" workers="1" config="cprefix=THEcprefix;containers=r(NUMwrcontstart,NUMwrcontend)" />
+    </workstage> 
+
+    <workstage name="seqwrite">
+      <work name="seqwrite" workers="SEQworkers" division="object" runtime="THEruntime">
+        <operation type="write" ratio="100" config="cprefix=THEcprefix;containers=s(NUMwrcontstart,NUMwrcontend);objects=s(1,THEnumObj);sizes=THEsizes" />
+      </work>
+    </workstage>
+
+    <workstage name="cleanup">
+      <work type="cleanup" workers="FILLworkers" config="cprefix=THEcprefix;containers=r(NUMwrcontstart,NUMwrcontend);objects=r(1,THEmaxNumObj)" />
+    </workstage>
+
+    <workstage name="dispose">
+      <work type="dispose" workers="1" config="cprefix=THEcprefix;containers=r(NUMwrcontstart,NUMwrcontend)" />
     </workstage>
 
   </workflow>
